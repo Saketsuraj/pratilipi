@@ -1,0 +1,45 @@
+<div class="register-container">
+    <div class="form-holder">
+        <h5 class="form-type">SIGN UP</h5>
+
+        <h2 class="heading">Create your account</h2>
+        <h5 class="f-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h5>
+
+        <!--Social Media Register Buttons-->
+        <div class="social-btns">
+            <button type="button" (click)="googleRegistration()"> <i class="fab fa-google"></i> <span>Sign up with Google</span></button>
+            <button type="button" (click)="facebookRegistration()"> <i class="fab fa-facebook-square"></i> <span>Sign up with Facebook</span></button>
+        </div>
+
+        <div class="or-divider">
+            <div><hr></div>
+            <div>or</div>
+            <div><hr></div>
+        </div>
+
+        <div class="form-container">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="input-holder">
+                    <input type="text" placeholder="First Name" formControlName="firstName" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && signupForm.controls.firstName.errors && signupForm.controls.firstName.errors.required" class="error">First name cannot be empty</span>
+                <div class="input-holder">
+                    <input type="text" placeholder="Last Name" formControlName="lastName" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && signupForm.controls.lastName.errors && signupForm.controls.lastName.errors.required" class="error">Last name cannot be empty</span>
+                <div class="input-holder">
+                    <input type="email" placeholder="Email Address" formControlName="email" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && signupForm.controls.email.errors && signupForm.controls.email.errors.required" class="error">Email cannot be empty</span>
+                <div class="input-holder">
+                    <input type="password" placeholder="Password" formControlName="password" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && signupForm.controls.password.errors && signupForm.controls.password.errors.required" class="error">Password cannot be empty</span>
+                <p>By clicking Sign Up, you agree to our <a>Terms of Use</a> and our <a>Privacy Policy</a>.</p>
+                <div class="input-holder">
+                    <button type="submit" [disabled]="isSubmitBtnDisabled">{{submitBtnText}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
