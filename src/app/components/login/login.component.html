@@ -1,0 +1,22 @@
+<div class="login-container">
+    <div class="form-holder">
+        <h5 class="form-type">LOG IN</h5>
+
+        <div class="form-container">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="input-holder">
+                    <input type="email" placeholder="Email Address" formControlName="email" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && loginForm.controls.email.errors && loginForm.controls.email.errors.required" class="error">Email cannot be empty</span>
+                <div class="input-holder">
+                    <input type="password" placeholder="Password" formControlName="password" value="" />
+                </div>
+                <span *ngIf="!formSubmitted && loginForm.controls.password.errors && loginForm.controls.password.errors.required" class="error">Password cannot be empty</span>
+                <p>Not a user? <a routerLink="/">Sign up</a></p>
+                <div class="input-holder">
+                    <button type="submit" [disabled]="isSubmitBtnDisabled">{{submitBtnText}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

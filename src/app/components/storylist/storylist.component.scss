@@ -1,0 +1,15 @@
+.storylist-container{
+    display: flex;
+    justify-content: center;
+    div.list-holder{
+        width: 500px;   
+        padding: 10px 45px;
+        box-shadow: 0px 0px 3px 0px #ddd;
+        border-radius: 2px;
+        div.story-holder{
+            h4{
+                text-decoration: underline;
+            }
+        }
+    }
+}

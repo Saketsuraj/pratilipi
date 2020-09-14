@@ -6,12 +6,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService { 
 
-  baseUrl = "https://reqres.in/api/";
+  baseUrl = "http://localhost:4000/user/";
 
   constructor(private http: HttpClient) { }
 
   register(data){
-    return this.http.post(this.baseUrl+'register', data);
+    return this.http.post(this.baseUrl+'signup', data);
+  }
+
+  login(data){
+    return this.http.post(this.baseUrl+'login', data);
+  }
+
+  storylist(){
+    return this.http.get(this.baseUrl+'all/stories');
+  }
+
+  story(title){
+    return this.http.get(this.baseUrl+'story/'+title);
   }
 }
  

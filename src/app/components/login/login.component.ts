@@ -2,19 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from './../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router, ActivatedRoute } from '@angular/router';
 
+declare var gapi : any;
+
+declare var FB: any;
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  signupForm = this.fb.group({
+export class LoginComponent implements OnInit {
+  loginForm = this.fb.group({
     password: ['', Validators.required],
     email: ['', Validators.required],
   });
+  gapiSetup = false;
   authInstance:any;
-  submitBtnText = 'SIGN UP';
+  submitBtnText = 'LOG IN';
 
   formSubmitted = true;
   isSubmitBtnDisabled = false;
@@ -22,16 +27,18 @@ export class RegisterComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private toastr: ToastrService,
-    public apiService: ApiService
+    public apiService: ApiService,
+    public route: Router
   ) { }
 
   ngOnInit(): void {
-   
-
+   if(sessionStorage.getItem('userdetails')){
+    this.route.navigate(['/storylist']);
+   }
   }
 
   resetForm() {
-    this.signupForm = this.fb.group({
+    this.loginForm = this.fb.group({
       password: ['', Validators.required],
       email: ['', Validators.required],
     });
@@ -39,26 +46,27 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.formSubmitted = false;
-    if (this.signupForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
     this.formSubmitted = true;
     this.submitBtnText = 'Submitting, please wait...';
     this.isSubmitBtnDisabled = true;
-    this.apiService.register(this.signupForm.value).subscribe(
+    this.apiService.login(this.loginForm.value).subscribe(
       (res) => {
         this.toastr.success(
-          'Successfully Registered',
-          'You are registered sucessfully on this app'
+          'Logged In Successfully',
+          ''
         );
+        sessionStorage.setItem('userdetails', JSON.stringify(res));
         this.isSubmitBtnDisabled = false;
-        this.submitBtnText = 'SIGN UP';
+        this.submitBtnText = 'LOG IN';
         this.resetForm();
       },
       (err) => {
         this.isSubmitBtnDisabled = false;
         this.toastr.error('Error occurred', err.error.error);
-        this.submitBtnText = 'SIGN UP';
+        this.submitBtnText = 'LOG IN';
       }
     );
   }
