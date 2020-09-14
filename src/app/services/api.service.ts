@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService { 
 
-  baseUrl = "http://localhost:4000/user/";
+  baseUrl = "https://pratilipi123.herokuapp.com/user/";
 
   constructor(private http: HttpClient) { }
 
