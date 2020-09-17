@@ -1,9 +1,9 @@
 <div class="storylist-container">
     <div class="list-holder">
-        <p>Logged In user: {{email}}</p>
+        <app-secondary-header [email]="email" ></app-secondary-header>
         <div class="story-holder">
             <h4>List of stories:-</h4>
-            <h5 *ngFor="let story of storyList"><a routerLink="/story/{{story.title}}">{{story.title}}</a></h5>
+            <h5 *ngFor="let story of storyList"><a routerLink="/story/{{story.title}}/{{story._id}}">{{story.title}}</a></h5>
         </div>
     </div>
 </div>

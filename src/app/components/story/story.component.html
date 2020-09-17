@@ -1,8 +1,10 @@
 <div class="storylist-container">
     <div class="list-holder">
-        <p>Logged In user: {{email}}</p>
+        <app-secondary-header [email]="email" ></app-secondary-header>
+        <p><a class="back" (click)="goback()">Back</a> <span>Total Count: {{totalcount}}</span></p>
         <div class="story-holder">
             <h4>{{title}}</h4>
             <p>{{content}}</p>
+        </div>
     </div>
 </div>

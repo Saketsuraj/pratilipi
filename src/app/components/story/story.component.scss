@@ -10,4 +10,11 @@
            
         }
     }
+    a.back{
+        cursor: pointer;
+        color: blue;
+    }
+    a.back+span{
+        float:right;
+    }
 }

@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
         this.isSubmitBtnDisabled = false;
         this.submitBtnText = 'LOG IN';
         this.resetForm();
+        this.route.navigate(['/storylist']);
       },
       (err) => {
         this.isSubmitBtnDisabled = false;

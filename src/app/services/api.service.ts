@@ -25,5 +25,9 @@ export class ApiService {
   story(title){
     return this.http.get(this.baseUrl+'story/'+title);
   }
+
+  totalcount(data){
+    return this.http.post(this.baseUrl+'total/count', data);
+  }
 }
  

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'storylist', component: StorylistComponent },
-  { path: 'story/:title', component: StoryComponent }
+  { path: 'story/:title/:id', component: StoryComponent }
   //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-storylist',
@@ -10,7 +11,7 @@ export class StorylistComponent implements OnInit {
 
   email  = "";
   storyList:any;
-  constructor(public apiService: ApiService) { }
+  constructor(public apiService: ApiService, public route: Router) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('userdetails')){
@@ -18,6 +19,9 @@ export class StorylistComponent implements OnInit {
       this.apiService.storylist().subscribe(res=>{
         this.storyList = res;
       });
+    }
+    else{
+      this.route.navigate(['/login']);
     }
   }
 
